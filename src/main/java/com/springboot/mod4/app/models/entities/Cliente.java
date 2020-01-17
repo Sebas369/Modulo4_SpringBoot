@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "clientes")
@@ -38,8 +38,8 @@ public class Cliente implements Serializable {
 	@NotNull
 	@Column(name = "create_at")
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd-mm-yyyy")
 	private Date createAt;
-	
 
 	public Long getId() {
 		return id;
