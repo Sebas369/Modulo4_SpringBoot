@@ -1,6 +1,7 @@
 package com.springboot.mod4.app.models.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class ClienteServiceImpl implements IClienteService{
 	@Override
 	public List<Cliente> findAll() {
 		
-		return clienteDaoImpl.findAll();
+		return (List<Cliente>) clienteDaoImpl.findAll();
 	}
 	
 	@Transactional
@@ -32,16 +33,16 @@ public class ClienteServiceImpl implements IClienteService{
 
 	@Transactional(readOnly = true)
 	@Override
-	public Cliente findOne(Long id) {
+	public Optional<Cliente> findOne(Long id) {
 		
-		return clienteDaoImpl.findOne(id);
+		return clienteDaoImpl.findById(id);
 	}
 
 	@Transactional
 	@Override
 	public void deleteOne(Long id) {
 		
-		clienteDaoImpl.deleteOne(id);
+		clienteDaoImpl.deleteById(id);
 	}
 
 }

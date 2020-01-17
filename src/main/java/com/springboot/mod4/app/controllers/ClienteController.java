@@ -1,6 +1,7 @@
 package com.springboot.mod4.app.controllers;
 
 import java.util.Map;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -42,7 +43,7 @@ public class ClienteController {
 	@RequestMapping(value = "/form/{id}")
 	public String editar(@PathVariable(value = "id") Long id, Map<String, Object> model) {
 
-		Cliente cliente = null;
+		Optional<Cliente> cliente = null;
 
 		if (id > 0) {
 			cliente = clienteService.findOne(id);
